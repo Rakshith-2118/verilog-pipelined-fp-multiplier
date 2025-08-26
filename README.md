@@ -8,10 +8,10 @@ This repository contains the Verilog source code for a high-performance, 16-bit 
 
 ## Key Features 🎯
 
-* [cite_start]**3-Stage Pipelined Architecture**: The multiplier breaks the logic into three smaller stages (Decode/Multiply, Normalize, Round/Assemble) to increase throughput[cite: 1]. [cite_start]It has a 3-cycle latency but allows a new operation to begin every clock cycle[cite: 2].
-* [cite_start]**Overflow & Underflow Detection**: The module includes robust logic to detect when the result is too large (overflow) or too small (underflow) to be represented[cite: 3]. [cite_start]The result is clamped to infinity or zero, and corresponding flags are set[cite: 4].
-* [cite_start]**High-Accuracy Rounding**: Implements a precise "**Round to Nearest, Tie to Even**" rounding scheme to minimize numerical error, offering better accuracy than simple truncation[cite: 5, 29].
-* [cite_start]**Self-Checking Testbench**: The included testbench automatically verifies the multiplier's output against a set of predefined expected results[cite: 43]. [cite_start]It reports a `[PASS]` or `[FAIL]` status for each test case, making verification straightforward[cite: 48, 68].
+* **3-Stage Pipelined Architecture**: The multiplier breaks the logic into three smaller stages (Decode/Multiply, Normalize, Round/Assemble) to increase throughput[cite: 1]. [cite_start]It has a 3-cycle latency but allows a new operation to begin every clock cycle[cite: 2].
+* **Overflow & Underflow Detection**: The module includes robust logic to detect when the result is too large (overflow) or too small (underflow) to be represented[cite: 3]. [cite_start]The result is clamped to infinity or zero, and corresponding flags are set[cite: 4].
+* **High-Accuracy Rounding**: Implements a precise "**Round to Nearest, Tie to Even**" rounding scheme to minimize numerical error, offering better accuracy than simple truncation[cite: 5, 29].
+* **Self-Checking Testbench**: The included testbench automatically verifies the multiplier's output against a set of predefined expected results[cite: 43]. [cite_start]It reports a `[PASS]` or `[FAIL]` status for each test case, making verification straightforward[cite: 48, 68].
 
 ***
 
@@ -21,9 +21,9 @@ The core of this project is the `FloatingPoint_Multiplier_Complete.v` module. [c
 
 The operation is divided into three pipeline stages:
 
-1.  [cite_start]**Stage 1: Decode & Multiply**: This stage deconstructs the two 16-bit inputs (`a` and `b`) into their sign, exponent, and mantissa components[cite: 14, 16]. [cite_start]It performs the initial multiplication of the mantissas and calculates the new sign and exponent[cite: 19, 20, 21].
-2.  [cite_start]**Stage 2: Normalize**: The product from Stage 1 is normalized[cite: 22]. [cite_start]If the most significant bit of the product is set, the mantissa is shifted right and the exponent is incremented to bring the result back into the standard `1.xxx` format[cite: 25, 26].
-3.  [cite_start]**Stage 3: Round & Assemble**: This final stage applies the "Round to Nearest, Tie to Even" logic to the normalized mantissa[cite: 29]. [cite_start]It also performs the final overflow and underflow checks[cite: 37, 38, 39]. [cite_start]Finally, it assembles the sign, exponent, and mantissa into the final 16-bit result[cite: 40].
+1.  **Stage 1: Decode & Multiply**: This stage deconstructs the two 16-bit inputs (`a` and `b`) into their sign, exponent, and mantissa components[cite: 14, 16]. [cite_start]It performs the initial multiplication of the mantissas and calculates the new sign and exponent[cite: 19, 20, 21].
+2.  **Stage 2: Normalize**: The product from Stage 1 is normalized[cite: 22]. [cite_start]If the most significant bit of the product is set, the mantissa is shifted right and the exponent is incremented to bring the result back into the standard `1.xxx` format[cite: 25, 26].
+3.  **Stage 3: Round & Assemble**: This final stage applies the "Round to Nearest, Tie to Even" logic to the normalized mantissa[cite: 29]. [cite_start]It also performs the final overflow and underflow checks[cite: 37, 38, 39]. [cite_start]Finally, it assembles the sign, exponent, and mantissa into the final 16-bit result[cite: 40].
 
 ***
 
