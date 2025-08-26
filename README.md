@@ -29,7 +29,7 @@ The operation is divided into three pipeline stages:
 
 ## How to Simulate 💻
 
-This project was originally developed and verified using **Xilinx ISE**, but it's written in standard Verilog and should be compatible with most simulators.
+This project was originally developed and verified using **Xilinx Vivado**, but it's written in standard Verilog and should be compatible with most simulators.
 
 1.  **Get a Verilog Simulator**: You can use any standard Verilog simulator, such as Icarus Verilog (open-source), ModelSim, or the simulators included with Vivado or Quartus.
 2.  **Compile the Files**: Compile both `FloatingPoint_Multiplier_Complete.v` and `self_checking_tb.v`.
